@@ -17,11 +17,6 @@ export default new Router({
       component: Login
     },
     {
-      name: 'Login',
-      path: '/login',
-      component: Login
-    },
-    {
       name: 'Home',
       path: '/home',
       // redirect: '/patient-manage',
