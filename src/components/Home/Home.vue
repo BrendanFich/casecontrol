@@ -6,30 +6,30 @@
     <div class="left">
       <div class="avatar"></div>
       <div class="name">Admin</div>
-      <!-- <el-button>11</el-button> -->
       <div class="nav">
         <el-menu
-          default-active=""
+          default-active
           background-color="transparent"
           class="el-menu-vertical-demo"
           @open="handleOpen"
-          @close="handleClose">
+          @close="handleClose"
+        >
           <el-submenu index="1">
-            <template slot="title">
+            <template slot="title" class="ss">
               <i class="el-icon-location"></i>
               <span>质控</span>
             </template>
-            <el-menu-item index="1-1">环节质控信息汇总</el-menu-item>
-            <el-menu-item index="1-2">终末质控信息汇总</el-menu-item>
-            <el-menu-item index="1-3">病例复查</el-menu-item>
+            <el-menu-item index="1-1" @click="$router.push('/qualityControl/qcSectionInfo')">环节质控信息汇总</el-menu-item>
+            <el-menu-item index="1-2" @click="$router.push('/qualityControl/qcEndInfo')">终末质控信息汇总</el-menu-item>
+            <el-menu-item index="1-3" @click="$router.push('/qualityControl/recordReview')">病例复查</el-menu-item>
           </el-submenu>
           <el-submenu index="2">
             <template slot="title">
               <i class="el-icon-location"></i>
               <span>统计</span>
             </template>
-            <el-menu-item index="2-1">环节质控信息汇总</el-menu-item>
-            <el-menu-item index="2-2">终末质控信息汇总</el-menu-item>
+            <el-menu-item index="2-1" @click="$router.push('/statistics/statsSectionInfo')">环节质控信息汇总</el-menu-item>
+            <el-menu-item index="2-2" @click="$router.push('/statistics/statsEndInfo')">终末质控信息汇总</el-menu-item>
             <el-menu-item index="2-3">运行病历时限监控</el-menu-item>
             <el-menu-item index="2-4">终末病历评分</el-menu-item>
             <el-menu-item index="2-5">质控员工作量</el-menu-item>
@@ -73,12 +73,9 @@ export default {
     return {}
   },
   methods: {
-    handleOpen () {
-
-    },
-    handleClose () {
-
-    }
+    handleOpen () {},
+    handleClose () {},
+    linkTo (index) {}
   }
 }
 </script>
@@ -126,6 +123,8 @@ export default {
       width: 100%
       overflow-x: hidden
       overflow-y: auto
+      &::-webkit-scrollbar
+        display: none
       .el-menu
         width: 100%
         >>>.el-submenu__title
@@ -133,6 +132,23 @@ export default {
           background: transparent
           p,i
             @include font(14px, 400, $color-white)
+          &:hover
+            background: $color-white!important
+            color: $color-word-blue
+            p,i
+              @include font(14px, 400, $color-word-blue)
+        .el-menu-item
+          @include font(14px, 800, $color-white)
+          &:hover
+            background: transparent!important
+            color: $color-menu-green
+        .el-menu-item.is-active
+          @include font(14px, 800, $color-menu-green)
+          background: transparent!important
+      .el-menu.is-active
+        .el-submenu__title
+          background: $color-white!important
+
   .main
     position: absolute
     top: 80px

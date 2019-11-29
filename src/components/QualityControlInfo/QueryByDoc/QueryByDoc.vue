@@ -14,7 +14,7 @@
     </div>
     <div class="content">
       <div class="table">
-        <el-table :data="tableData" style="width: 100%">
+        <el-table :data="tableData" style="width: 100%" @current-change="handleCurrentChange">
           <el-table-column prop="patientStatus" label="病人状态" align="center"></el-table-column>
           <el-table-column prop="inHospitalNo" label="住院号" align="center"></el-table-column>
           <el-table-column prop="bedNo" label="床号" align="center"></el-table-column>
@@ -117,7 +117,11 @@ export default {
   },
   computed: {},
   watch: {},
-  methods: {},
+  methods: {
+    handleCurrentChange () {
+      this.$router.push('/qualityControlInfo/monitor/timeLimitMonitor')
+    }
+  },
   created () {}
 }
 </script>
@@ -142,4 +146,6 @@ export default {
       left: 0
     .notice
       color: $color-notice-red
+    >>>.el-table__row
+      cursor: pointer
 </style>
