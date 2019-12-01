@@ -1,5 +1,5 @@
 <template>
-  <div class="qcSectionInfo">
+  <div class="endQcInfoSum1">
     <div class="top">
       <div class="topLeft">
         <div class="tag">环节质控信息汇总</div>
@@ -9,10 +9,26 @@
           <span style="color: #3399FFFF; font-size: 14px">(双击科室查看详情)</span>
         </div>
       </div>
-      <el-button type="primary">刷新</el-button>
+      <div class="topRight">
+        <label>出院日期</label>
+        <el-date-picker
+          class="datePicker"
+          v-model="startTime"
+          type="date"
+          placeholder="请选择开始日期">
+        </el-date-picker>
+        -
+        <el-date-picker
+          class="datePicker"
+          v-model="endTime"
+          type="date"
+          placeholder="请选择结束日期">
+        </el-date-picker>
+        <el-button type="primary">刷新</el-button>
+      </div>
     </div>
     <div class="main">
-      <el-table :data="tableData" style="width: 100%" @current-change="handleCurrentChange">
+      <el-table :data="tableData" style="width: 100%">
         <el-table-column prop="deptName" label="科室名称" align="center"></el-table-column>
         <el-table-column prop="inHospitalAmount" label="在院人数" align="center"></el-table-column>
         <el-table-column prop="newAmount" label="新收人数" align="center"></el-table-column>
@@ -40,6 +56,8 @@ export default {
   components: {},
   data () {
     return {
+      startTime: '',
+      endTime: '',
       tableData: [
         {
           deptName: '心血管内科',
@@ -78,11 +96,7 @@ export default {
   },
   computed: {},
   watch: {},
-  methods: {
-    handleCurrentChange () {
-      this.$router.push('/qualityControl/deptQcInfo')
-    }
-  },
+  methods: {},
   created () {}
 }
 </script>
@@ -90,7 +104,7 @@ export default {
 <style lang="sass" scoped>
 @import '~assets/sass/variable'
 @import '~assets/sass/mixin'
-.qcSectionInfo
+.endQcInfoSum1
   .top
     display: flex
     justify-content: space-between
@@ -107,17 +121,21 @@ export default {
         @include font(14px, 400, $color-white)
       .infoText
         margin-left: 20px
+    .topRight
+      display: flex
+      align-items: center
       .el-button
         width: 90px
         height: 35px
+        padding: 0
+      .datePicker
+        margin: 0 20px
   .main
     width: 100%
     height: 686px
     position: relative
     border: 1px solid rgba(238,238,238,1)
     box-shadow: 3px 4px 5px 0px rgba(231,233,235,0.49)
-    >>>.el-table__row
-      cursor: pointer
     .footer
       width: 100%
       text-align: center

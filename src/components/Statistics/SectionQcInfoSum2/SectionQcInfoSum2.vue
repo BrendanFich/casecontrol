@@ -1,5 +1,5 @@
 <template>
-  <div class="statsSectionInfo">
+  <div class="sectionQcInfoSum2">
     <div class="top">
       <div class="topLeft">
         <div class="tag">终末质控信息汇总</div>
@@ -90,7 +90,7 @@ export default {
 <style lang="sass" scoped>
 @import '~assets/sass/variable'
 @import '~assets/sass/mixin'
-.statsSectionInfo
+.sectionQcInfoSum2
   .top
     display: flex
     justify-content: space-between

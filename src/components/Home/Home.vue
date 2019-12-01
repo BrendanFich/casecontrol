@@ -8,54 +8,54 @@
       <div class="name">Admin</div>
       <div class="nav">
         <el-menu
-          default-active
+          :unique-opened="true"
           background-color="transparent"
-          class="el-menu-vertical-demo"
-          @open="handleOpen"
-          @close="handleClose"
+          text-color="#fff"
+          active-text-color="#99FFFFFF"
+          :router="true"
         >
           <el-submenu index="1">
             <template slot="title" class="ss">
               <i class="el-icon-location"></i>
               <span>质控</span>
             </template>
-            <el-menu-item index="1-1" @click="$router.push('/qualityControl/qcSectionInfo')">环节质控信息汇总</el-menu-item>
-            <el-menu-item index="1-2" @click="$router.push('/qualityControl/qcEndInfo')">终末质控信息汇总</el-menu-item>
-            <el-menu-item index="1-3" @click="$router.push('/qualityControl/recordReview')">病例复查</el-menu-item>
+            <el-menu-item index="/qualityControl/sectionQcInfoSum1">环节质控信息汇总</el-menu-item>
+            <el-menu-item index="/qualityControl/endQcInfoSum1">终末质控信息汇总</el-menu-item>
+            <el-menu-item index="/qualityControl/caseHistoryReview">病例复查</el-menu-item>
           </el-submenu>
           <el-submenu index="2">
             <template slot="title">
               <i class="el-icon-location"></i>
               <span>统计</span>
             </template>
-            <el-menu-item index="2-1" @click="$router.push('/statistics/statsSectionInfo')">环节质控信息汇总</el-menu-item>
-            <el-menu-item index="2-2" @click="$router.push('/statistics/statsEndInfo')">终末质控信息汇总</el-menu-item>
-            <el-menu-item index="2-3">运行病历时限监控</el-menu-item>
-            <el-menu-item index="2-4">终末病历评分</el-menu-item>
-            <el-menu-item index="2-5">质控员工作量</el-menu-item>
-            <el-menu-item index="2-6">质控问题明细查询</el-menu-item>
-            <el-menu-item index="2-7">缺陷明细查询(按缺陷)</el-menu-item>
-            <el-menu-item index="2-8">缺陷明细查询(按科室)</el-menu-item>
+            <el-menu-item index="/statistics/sectionQcInfoSum2">环节质控信息汇总</el-menu-item>
+            <el-menu-item index="/statistics/endQcInfoSum2">终末质控信息汇总</el-menu-item>
+            <el-menu-item index="/statistics/runTimeLimitMonitor">运行病历时限监控</el-menu-item>
+            <el-menu-item index="/statistics/endScore">终末病历评分</el-menu-item>
+            <el-menu-item index="/statistics/qcerWorkload">质控员工作量</el-menu-item>
+            <el-menu-item index="/statistics/qcDetailSearch">质控问题明细查询</el-menu-item>
+            <el-menu-item index="/statistics/searchByDefect">缺陷明细查询(按缺陷)</el-menu-item>
+            <el-menu-item index="/statistics/searchByDept">缺陷明细查询(按科室)</el-menu-item>
           </el-submenu>
           <el-submenu index="3">
             <template slot="title">
               <i class="el-icon-document"></i>
               <span>字典维护</span>
             </template>
-            <el-menu-item index="3-1">维护质控字典</el-menu-item>
-            <el-menu-item index="3-2">维护质控模板</el-menu-item>
-            <el-menu-item index="3-3">维护科室质控模板</el-menu-item>
+            <el-menu-item index="/dictionaryMaint/maintQcDictionary">维护质控字典</el-menu-item>
+            <el-menu-item index="/dictionaryMaint/maintQcTemplate">维护质控模板</el-menu-item>
+            <el-menu-item index="/dictionaryMaint/maintDeptQcTemplate">维护科室质控模板</el-menu-item>
           </el-submenu>
           <el-submenu index="4">
             <template slot="title">
               <i class="el-icon-setting"></i>
               <span>系统维护</span>
             </template>
-            <el-menu-item index="4-1">用户管理</el-menu-item>
-            <el-menu-item index="4-2">角色管理</el-menu-item>
-            <el-menu-item index="4-3">菜单管理</el-menu-item>
-            <el-menu-item index="4-4">参数配置</el-menu-item>
-            <el-menu-item index="4-5">密码修改</el-menu-item>
+            <el-menu-item index="/systemMaint/userManage">用户管理</el-menu-item>
+            <el-menu-item index="/systemMaint/rolesManage">角色管理</el-menu-item>
+            <el-menu-item index="/systemMaint/menuManage">菜单管理</el-menu-item>
+            <el-menu-item index="/systemMaint/paramsConfig">参数配置</el-menu-item>
+            <el-menu-item index="/systemMaint/passwordChange">密码修改</el-menu-item>
           </el-submenu>
         </el-menu>
       </div>
@@ -73,9 +73,6 @@ export default {
     return {}
   },
   methods: {
-    handleOpen () {},
-    handleClose () {},
-    linkTo (index) {}
   }
 }
 </script>
@@ -120,35 +117,33 @@ export default {
       @include font(16px, 400, $color-white)
       margin-bottom: 40px
     .nav
+      flex: 1
       width: 100%
       overflow-x: hidden
       overflow-y: auto
       &::-webkit-scrollbar
         display: none
-      .el-menu
+      >>>.el-menu
         width: 100%
-        >>>.el-submenu__title
-          @include font(14px, 800, $color-white)
-          background: transparent
-          p,i
-            @include font(14px, 400, $color-white)
+        .el-submenu.is-opened>.el-submenu__title
+          background: $color-white!important
+          color: $color-primary!important
+          i
+            color: $color-primary
+        .el-submenu__title
+          i
+            color: $color-white
           &:hover
             background: $color-white!important
-            color: $color-word-blue
-            p,i
-              @include font(14px, 400, $color-word-blue)
+            color: $color-primary!important
+            i
+              color: $color-primary
         .el-menu-item
-          @include font(14px, 800, $color-white)
           &:hover
             background: transparent!important
-            color: $color-menu-green
         .el-menu-item.is-active
-          @include font(14px, 800, $color-menu-green)
+          color: $color-menu-green!important
           background: transparent!important
-      .el-menu.is-active
-        .el-submenu__title
-          background: $color-white!important
-
   .main
     position: absolute
     top: 80px
@@ -157,5 +152,5 @@ export default {
     height: calc(100% - 80px)
     overflow-y: auto
     .view
-      padding: 30px 70px 0 50px
+      padding: 30px 70px 50px 50px
 </style>

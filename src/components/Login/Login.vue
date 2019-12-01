@@ -5,8 +5,8 @@
       <div class="rightInfo">
         <div class="title">病历质控系统</div>
         <div class="loginInput">
-          <el-input placeholder="请输入用户名" prefix-icon="el-icon-user-solid"  v-model="login.username" size="large"></el-input>
-          <el-input placeholder="请输入密码" prefix-icon="el-icon-lock"  v-model="login.password" type="password" size="large"></el-input>
+          <el-input placeholder="请输入用户名" prefix-icon="el-icon-user-solid" v-model="login.username" size="large" clearable></el-input>
+          <el-input placeholder="请输入密码" prefix-icon="el-icon-lock" v-model="login.password" type="password" size="large" clearable></el-input>
           <div class="remember">
             <span>记住密码</span> <el-switch v-model="isRemember"></el-switch>
           </div>
@@ -70,11 +70,24 @@ export default {
         @include font(40px, 800, $color-login-title)
         margin-bottom: 54px
       .loginInput
-        .el-input
+        >>>.el-input
           margin: 10px 0
+          .el-input__inner
+            background: transparent
+            border-radius: 0
+            border: 0
+            border-bottom: 1px solid $color-border-grey
+            &:focus
+              border-bottom-color: $color-primary
+          .el-input__icon
+            @include font(16px, 400, $color-primary)
         .remember
           margin: 30px 0
+          span
+            @include font(15px, 400, $color-word-grey)
+            margin: 0 14px
         .el-button
           width: 100%
+          height: 40px
           @include font(18px, 400, $color-white)
 </style>

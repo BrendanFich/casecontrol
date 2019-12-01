@@ -1,15 +1,7 @@
 <template>
   <div class="queryByDoc">
     <div class="top">
-      <label>选择医生</label>
-      <el-select v-model="value" placeholder="请选择">
-        <el-option
-          v-for="item in options"
-          :key="item.value"
-          :label="item.label"
-          :value="item.value"
-        ></el-option>
-      </el-select>
+      <MySelect label="选择医生" :options="options" v-model="value" :icon="'el-icon-user'"></MySelect>
       <el-button type="primary">刷新</el-button>
     </div>
     <div class="content">
@@ -46,8 +38,9 @@
 </template>
 
 <script>
+import MySelect from '@/base/MySelect/MySelect'
 export default {
-  components: {},
+  components: {MySelect},
   data () {
     return {
       value: '',
@@ -130,11 +123,17 @@ export default {
 @import '~assets/sass/variable'
 @import '~assets/sass/mixin'
 .queryByDoc
+  height: calc(100% - 130px)
+  .top
+    display: flex
+    align-items: center
+    .el-button
+      margin-left: 15px
   .content
     position: relative
     margin-top: 18px
     width: 100%
-    height: 686px
+    height: 100%
     border: 1px solid rgba(238,238,238,1)
     box-shadow: 3px 4px 5px 0px rgba(231,233,235,0.49)
     .footer

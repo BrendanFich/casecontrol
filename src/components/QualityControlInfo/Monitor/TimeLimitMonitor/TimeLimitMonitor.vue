@@ -49,11 +49,7 @@ export default {
 @import '~assets/sass/variable'
 @import '~assets/sass/mixin'
 .timeLimitMonitor
-  width: 100%
-  height: 686px
-  position: relative
-  border: 1px solid rgba(238,238,238,1)
-  box-shadow: 3px 4px 5px 0px rgba(231,233,235,0.49)
+  .el-table
   .footer
     width: 100%
     text-align: center

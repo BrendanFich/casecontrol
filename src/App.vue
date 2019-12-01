@@ -20,4 +20,8 @@ ul,li
   list-style: none
   margin: 0
   padding: 0
+.el-button
+  width: 90px
+  height: 32px
+  padding: 0
 </style>
