@@ -13,8 +13,9 @@ import DefectRegister from '@/components/QualityControlInfo/Monitor/DefectRegist
 // 质控
 import SectionQcInfoSum1 from '@/components/QualityControl/SectionQcInfoSum1/SectionQcInfoSum1'
 import EndQcInfoSum1 from '@/components/QualityControl/EndQcInfoSum1/EndQcInfoSum1'
-import CaseHistoryReview from '@/components/QualityControl/CaseHistoryReview/CaseHistoryReview'
 import DeptQcInfo from '@/components/QualityControl/DeptQcInfo/DeptQcInfo'
+import CaseHistoryReview from '@/components/QualityControl/CaseHistoryReview/CaseHistoryReview'
+import EnterHospRecord from '@/components/QualityControl/CaseHistoryReview/EnterHospRecord/EnterHospRecord'
 
 // 统计
 import SectionQcInfoSum2 from '@/components/Statistics/SectionQcInfoSum2/SectionQcInfoSum2'
@@ -113,7 +114,15 @@ export default new Router({
         {
           name: 'CaseHistoryReview',
           path: 'caseHistoryReview',
-          component: CaseHistoryReview
+          component: CaseHistoryReview,
+          redirect: '/qualityControl/caseHistoryReview/enterHospRecord',
+          children: [
+            {
+              name: 'EnterHospRecord',
+              path: 'enterHospRecord',
+              component: EnterHospRecord
+            }
+          ]
         },
         {
           name: 'DeptQcInfo',

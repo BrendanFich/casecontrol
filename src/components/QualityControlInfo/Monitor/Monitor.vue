@@ -3,27 +3,37 @@
     <div class="top">
       <ul class="patientInfo">
         <li>
-          <div class="key">床号</div>
+          <div class="key"><img src="./img/bedIcon.png"> 床号</div>
           <div class="value">006</div>
         </li>
         <li>
-          <div class="key">姓名</div>
+          <div class="key"><img src="./img/nameIcon.png"> 床号姓名</div>
           <div class="value">宋凝</div>
         </li>
         <li>
-          <div class="key">质控次数</div>
+          <div class="key"><img src="./img/qcTimeIcon.png"> 质控次数</div>
           <div class="value">1</div>
         </li>
       </ul>
       <ul class="operating">
         <li>
-          <el-button round class="btn">上一人</el-button>
+          <el-button round class="btn">
+            <i class="circleIcon">
+              <img src="./img/leftIcon.png" >
+            </i> 上一人
+          </el-button>
         </li>
         <li>
-          <el-button round class="btn">下一人</el-button>
+          <el-button round class="btn">
+            <i class="circleIcon">
+              <img src="./img/rightIcon.png" >
+            </i> 下一人
+          </el-button>
         </li>
         <li>
-          <el-button round class="btn">返回列表</el-button>
+          <el-button round class="btn">
+            <img src="./img/backIcon.png"> 返回列表
+          </el-button>
         </li>
       </ul>
     </div>
@@ -55,6 +65,11 @@
       </div>
       <div class="content">
         <router-view></router-view>
+      </div>
+      <div class="tips">
+        <div class="tip"><i class="el-icon-warning" style="color: #fa5741"></i>未完成</div>
+        <div class="tip"><i class="el-icon-success" style="color: #5bd542"></i> 已完成</div>
+        <div class="tip"><img src="./img/cancelIcon.png">取消</div>
       </div>
     </div>
   </div>
@@ -142,6 +157,8 @@ export default {
     .key
       @include font(16px, 400, $color-word-blue)
       line-height: 30px
+      img
+        margin-bottom: -3px
     .value
       line-height: 20px
   .operating>li
@@ -151,6 +168,16 @@ export default {
       height: 30px
       padding: 0
       border-color: $color-word-blue
+      .circleIcon
+        display: inline-block
+        width: 18px
+        height: 18px
+        background: $color-primary
+        border-radius: 50%
+        img
+          margin-bottom: -2px
+      img
+          margin-bottom: -2px
   .main
     .selectStatus
       position: absolute
@@ -177,4 +204,19 @@ export default {
     .content
       clear: both
       border-top: 3px solid $color-border-blue
+    .tips
+      margin-top: 21px
+      width: 100%
+      .tip
+        float: left
+        margin-left: 30px
+        line-height: 22px
+        display: flex
+        align-items: cneter
+        i
+          font-size: 22px
+        img
+          width: 18px
+          height: 18px
+          margin-right: 4px
 </style>

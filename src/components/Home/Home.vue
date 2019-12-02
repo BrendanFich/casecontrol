@@ -4,7 +4,7 @@
       <div class="title">病历质控系统</div>
     </div>
     <div class="left">
-      <div class="avatar"></div>
+      <img class="avatar" src="./img/faleAvatar.png">
       <div class="name">Admin</div>
       <div class="nav">
         <el-menu
@@ -16,7 +16,7 @@
         >
           <el-submenu index="1">
             <template slot="title" class="ss">
-              <i class="el-icon-location"></i>
+              <i class="el-icon-s-order"></i>
               <span>质控</span>
             </template>
             <el-menu-item index="/qualityControl/sectionQcInfoSum1">环节质控信息汇总</el-menu-item>
@@ -25,7 +25,7 @@
           </el-submenu>
           <el-submenu index="2">
             <template slot="title">
-              <i class="el-icon-location"></i>
+              <i class="el-icon-s-data"></i>
               <span>统计</span>
             </template>
             <el-menu-item index="/statistics/sectionQcInfoSum2">环节质控信息汇总</el-menu-item>
@@ -39,7 +39,7 @@
           </el-submenu>
           <el-submenu index="3">
             <template slot="title">
-              <i class="el-icon-document"></i>
+              <i class="el-icon-s-management"></i>
               <span>字典维护</span>
             </template>
             <el-menu-item index="/dictionaryMaint/maintQcDictionary">维护质控字典</el-menu-item>
@@ -152,5 +152,5 @@ export default {
     height: calc(100% - 80px)
     overflow-y: auto
     .view
-      padding: 30px 70px 50px 50px
+      padding: 30px 70px 0 50px
 </style>

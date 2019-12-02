@@ -49,7 +49,10 @@ export default {
 @import '~assets/sass/variable'
 @import '~assets/sass/mixin'
 .timeLimitMonitor
-  .el-table
+  width: 100%
+  height: 686px
+  position: relative
+  @include box-shadow
   .footer
     width: 100%
     text-align: center

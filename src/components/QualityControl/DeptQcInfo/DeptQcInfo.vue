@@ -141,8 +141,7 @@ export default {
   .form
     margin-top: 20px
     padding: 10px 15px 26px
-    border: 1px solid rgba(238,238,238,1)
-    box-shadow: 3px 4px 5px 0px rgba(231,233,235,0.49)
+    @include box-shadow
     >>>.el-input__inner
       height: 30px
     .el-form-item

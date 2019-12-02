@@ -3,7 +3,7 @@
     <el-table :data="tableData" style="width: 100%">
       <el-table-column prop="status" label="状态" align="center">
         <template>
-          <i class="" style='color: #F97463FF; font-size: 20px'></i>
+          <img src="./img/cancelIcon.png">
         </template>
       </el-table-column>
       <el-table-column prop="itemCode" label="项目编码" align="center"></el-table-column>
@@ -48,8 +48,7 @@ export default {
   width: 100%
   height: 686px
   position: relative
-  border: 1px solid rgba(238,238,238,1)
-  box-shadow: 3px 4px 5px 0px rgba(231,233,235,0.49)
+  @include box-shadow
   .footer
     width: 100%
     text-align: center
