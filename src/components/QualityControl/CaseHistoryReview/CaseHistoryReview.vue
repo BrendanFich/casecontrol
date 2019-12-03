@@ -71,7 +71,7 @@ export default {
   position: absolute
   top: -30px
   left: -50px
-  height: calc( 100% )
+  height: 100%
   .left
     width: 250px
     height: 100%

@@ -3,7 +3,7 @@
 import Vue from 'vue'
 import App from './App'
 import router from './router'
-import { Menu, Submenu, MenuItem, Dropdown, DropdownMenu, DropdownItem, Radio, RadioGroup, RadioButton, Button, Input, Switch, Image, Select, Option, Table, TableColumn, Pagination, Form, FormItem, DatePicker, Collapse, CollapseItem, TabPane, Tabs, Tag, Notification, MessageBox } from 'element-ui'
+import { Checkbox, Menu, Submenu, MenuItem, Dropdown, DropdownMenu, DropdownItem, Radio, RadioGroup, RadioButton, Button, Input, Switch, Image, Select, Option, Table, TableColumn, Pagination, Form, FormItem, DatePicker, Collapse, CollapseItem, TabPane, Tabs, Tag, Notification, MessageBox } from 'element-ui'
 import 'assets/sass/element-variables.scss'
 import 'assets/sass/iconfonts.sass'
 
@@ -33,6 +33,7 @@ Vue.use(DropdownItem)
 Vue.use(Radio)
 Vue.use(RadioGroup)
 Vue.use(RadioButton)
+Vue.use(Checkbox)
 Vue.config.productionTip = false
 
 Vue.prototype.$notify = Notification

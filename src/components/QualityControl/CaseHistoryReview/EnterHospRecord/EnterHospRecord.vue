@@ -159,6 +159,7 @@ export default {
       .key
         color: $color-word-blue
   .selectBar
+    float: left
     margin-top: 20px
     .tabs
       .tab

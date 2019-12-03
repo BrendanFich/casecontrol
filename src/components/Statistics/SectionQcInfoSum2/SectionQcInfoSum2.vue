@@ -118,6 +118,7 @@ export default {
         width: 90px
         height: 35px
     .topRight
+      margin-top: -20px
       display: flex
       justify-content: flex-end
       align-items: center
@@ -137,8 +138,6 @@ export default {
     border-top: none
     .table
       border-top: 3px solid $color-border-blue
-    >>>.el-table__row
-      cursor: pointer
     .footer
       width: 100%
       text-align: center

@@ -31,6 +31,7 @@ import SearchByDept from '@/components/Statistics/SearchByDept/SearchByDept'
 import MaintDeptQcTemplate from '@/components/DictionaryMaint/MaintDeptQcTemplate/MaintDeptQcTemplate'
 import MaintQcDictionary from '@/components/DictionaryMaint/MaintQcDictionary/MaintQcDictionary'
 import MaintQcTemplate from '@/components/DictionaryMaint/MaintQcTemplate/MaintQcTemplate'
+import ModifyTemplate from '@/components/DictionaryMaint/ModifyTemplate/ModifyTemplate'
 
 // 系统维护
 import MenuManage from '@/components/SystemMaint/MenuManage/MenuManage'
@@ -201,6 +202,11 @@ export default new Router({
           name: 'MaintDeptQcTemplate',
           path: 'maintDeptQcTemplate',
           component: MaintDeptQcTemplate
+        },
+        {
+          name: 'ModifyTemplate',
+          path: 'modifyTemplate',
+          component: ModifyTemplate
         }
       ]
     },
