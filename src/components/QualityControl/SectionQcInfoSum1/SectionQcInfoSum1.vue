@@ -14,7 +14,13 @@
       </div>
     </div>
     <div class="main">
-      <el-table :data="tableData" style="width: 100%" class="table" @current-change="handleCurrentChange">
+      <el-table
+        :data="tableData"
+        style="width: 100%"
+        class="table"
+        @current-change="handleCurrentChange"
+        :row-class-name="tableRowClassName"
+      >
         <el-table-column prop="deptName" label="科室名称" align="center"></el-table-column>
         <el-table-column prop="inHospitalAmount" label="在院人数" align="center"></el-table-column>
         <el-table-column prop="newAmount" label="新收人数" align="center">
@@ -47,7 +53,8 @@
             <span :class="{noticeNo: scope.row.handUnfinish>0}">{{scope.row.handUnfinish}}</span>
           </template>
         </el-table-column>
-        <el-table-column prop="timeUnfinish" label="时限监控未完成" align="center">\
+        <el-table-column prop="timeUnfinish" label="时限监控未完成" align="center">
+          \
           <template slot-scope="scope">
             <span :class="{noticeNo: scope.row.timeUnfinish>0}">{{scope.row.timeUnfinish}}</span>
           </template>
@@ -129,11 +136,17 @@ export default {
     handleCurrentChange () {
       this.$router.push('/qualityControl/deptQcInfo')
     },
-    tableRowClassName ({row, rowIndex}) {
-      if (rowIndex === 1) {
-        return 'warning-row'
-      } else if (rowIndex === 3) {
-        return 'success-row'
+    tableRowClassName ({ row, rowIndex }) {
+      let isRed =
+        row.newAmount > 0 ||
+        row.inAmount > 0 ||
+        row.outAmount > 0 ||
+        row.surgeryAmount > 0 ||
+        row.handUnfinish > 0 ||
+        row.timeUnfinish > 0 ||
+        row.contentUnfinish > 0
+      if (isRed) {
+        return 'warningRow'
       }
       return ''
     }
@@ -175,6 +188,8 @@ export default {
     border-top: none
     .table
       border-top: 3px solid $color-border-blue
+    >>>.warningRow
+      background: $color-warning-red
     .noticeNo
       color: $color-notice-red
     >>>.el-table__row
