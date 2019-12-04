@@ -1,7 +1,7 @@
 <template>
   <div class="deptQcInfo">
     <div class="operating">
-      <el-button type="primary" size="small" class="btn">抽查</el-button>
+      <el-button type="primary" size="small" class="btn" @click="spotCheck">抽查</el-button>
       <el-button type="primary" size="small" class="btn">查看缺陷</el-button>
       <el-button type="primary" size="small" class="btn">查看评分</el-button>
       <el-button type="primary" size="small" class="btn">刷新</el-button>
@@ -125,6 +125,9 @@ export default {
   methods: {
     onSubmit () {
       console.log('submit!')
+    },
+    spotCheck () {
+      this.$router.push('/qualityControl/spotCheck/enterHospRecord')
     }
   },
   created () {}

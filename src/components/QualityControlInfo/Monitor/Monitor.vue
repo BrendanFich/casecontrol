@@ -98,24 +98,6 @@ export default {
           path: '/qualityControlInfo/monitor/contentMonitor',
           number: 1
         }
-      ],
-      statusOptions: [
-        {
-          value: '选项1',
-          label: '全部'
-        },
-        {
-          value: '选项2',
-          label: '已完成'
-        },
-        {
-          value: '选项3',
-          label: '未完成'
-        },
-        {
-          value: '选项4',
-          label: '取消'
-        }
       ]
     }
   },

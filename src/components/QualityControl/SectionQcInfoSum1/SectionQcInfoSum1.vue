@@ -54,7 +54,6 @@
           </template>
         </el-table-column>
         <el-table-column prop="timeUnfinish" label="时限监控未完成" align="center">
-          \
           <template slot-scope="scope">
             <span :class="{noticeNo: scope.row.timeUnfinish>0}">{{scope.row.timeUnfinish}}</span>
           </template>

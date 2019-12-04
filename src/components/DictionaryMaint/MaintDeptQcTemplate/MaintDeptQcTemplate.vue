@@ -172,6 +172,12 @@ export default {
     height: calc(100vh - 80px)
     overflow-x: hidden
     overflow-y: auto
+    &::-webkit-scrollbar
+      width: 10px
+      background-color: #F5F5F5FF
+    &::-webkit-scrollbar-thumb
+      border-radius: 5px
+      background-color: $color-word-blue
     >li
       width: 250px
       height: 46px

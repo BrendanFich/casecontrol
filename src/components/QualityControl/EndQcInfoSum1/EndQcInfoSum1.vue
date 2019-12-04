@@ -36,21 +36,49 @@
       </div>
     </div>
     <div class="main">
-      <el-table :data="tableData" style="width: 100%" class="table">
+      <el-table :data="tableData" style="width: 100%" class="table" @current-change="handleCurrentChange" :row-class-name="tableRowClassName">
         <el-table-column prop="deptName" label="科室名称" align="center"></el-table-column>
-        <el-table-column prop="inHospitalAmount" label="在院人数" align="center"></el-table-column>
-        <el-table-column prop="newAmount" label="新收人数" align="center"></el-table-column>
-        <el-table-column prop="inAmount" label="转入数" align="center"></el-table-column>
-        <el-table-column prop="outAmount" label="转出数" align="center"></el-table-column>
-        <el-table-column prop="oneLevelAmount" label="一级护理病人数" align="center"></el-table-column>
-        <el-table-column prop="seriousAmount" label="危重人数" align="center"></el-table-column>
-        <el-table-column prop="surgeryAmount" label="手术例数" align="center"></el-table-column>
+        <el-table-column prop="outHospitalAmount" label="出院人数" align="center"></el-table-column>
+        <el-table-column prop="liveOver30Amount" label="住院超过30天" align="center"></el-table-column>
+        <el-table-column prop="liveOver60Amount" label="住院超过60天" align="center"></el-table-column>
+        <el-table-column prop="notArchivedAmount" label="未归档数" align="center">
+          <template slot-scope="scope">
+            <span :class="{noticeNo: scope.row.notArchivedAmount>0}">{{scope.row.notArchivedAmount}}</span>
+          </template>
+        </el-table-column>
+        <el-table-column prop="ArchivedAmount" label="已归档数" align="center">
+          <template slot-scope="scope">
+            <span :class="{noticeNo: scope.row.ArchivedAmount>0}">{{scope.row.ArchivedAmount}}</span>
+          </template>
+        </el-table-column>
+        <el-table-column prop="deathAmount" label="死亡人数" align="center">
+          <template slot-scope="scope">
+            <span :class="{noticeNo: scope.row.deathAmount>0}">{{scope.row.deathAmount}}</span>
+          </template>
+        </el-table-column>
+        <el-table-column prop="surgeryAmount" label="手术例数" align="center">
+          <template slot-scope="scope">
+            <span :class="{noticeNo: scope.row.surgeryAmount>0}">{{scope.row.surgeryAmount}}</span>
+          </template>
+        </el-table-column>
         <el-table-column prop="qcAmount" label="质控人数" align="center"></el-table-column>
         <el-table-column prop="defectTatal" label="缺陷问题总数" align="center"></el-table-column>
         <el-table-column prop="unfinishTotal" label="未完成总数" align="center"></el-table-column>
-        <el-table-column prop="handUnfinish" label="手动监控未完成" align="center"></el-table-column>
-        <el-table-column prop="timeUnfinish" label="时限监控未完成" align="center"></el-table-column>
-        <el-table-column prop="contentUnfinish" label="内容监控未完成" align="center"></el-table-column>
+        <el-table-column prop="handUnfinish" label="手动监控未完成" align="center">
+          <template slot-scope="scope">
+            <span :class="{noticeNo: scope.row.handUnfinish>0}">{{scope.row.handUnfinish}}</span>
+          </template>
+        </el-table-column>
+        <el-table-column prop="timeUnfinish" label="时限监控未完成" align="center">
+          <template slot-scope="scope">
+            <span :class="{noticeNo: scope.row.timeUnfinish>0}">{{scope.row.timeUnfinish}}</span>
+          </template>
+        </el-table-column>
+        <el-table-column prop="contentUnfinish" label="内容监控未完成" align="center">
+          <template slot-scope="scope">
+            <span :class="{noticeNo: scope.row.contentUnfinish>0}">{{scope.row.contentUnfinish}}</span>
+          </template>
+        </el-table-column>
       </el-table>
       <div class="footer">
         <el-pagination background layout="prev, pager, next" :total="100"></el-pagination>
@@ -69,29 +97,29 @@ export default {
       endDate: '',
       tableData: [
         {
-          deptName: '心血管内科',
-          inHospitalAmount: '1',
-          newAmount: '0',
-          inAmount: '2',
-          outAmount: '2',
-          oneLevelAmount: '2',
-          seriousAmount: '0',
-          surgeryAmount: '6',
-          qcAmount: '1',
-          defectTatal: '64',
-          unfinishTotal: '41',
-          handUnfinish: '2',
-          timeUnfinish: '24',
-          contentUnfinish: '15'
+          deptName: '泌尿胸外科',
+          outHospitalAmount: '2',
+          liveOver30Amount: '0',
+          liveOver60Amount: '0',
+          notArchivedAmount: '2',
+          ArchivedAmount: '2',
+          deathAmount: '1',
+          surgeryAmount: '3',
+          qcAmount: '0',
+          defectTatal: '32',
+          unfinishTotal: '19',
+          handUnfinish: '1',
+          timeUnfinish: '12',
+          contentUnfinish: '7'
         },
         {
-          deptName: '呼吸内科',
-          inHospitalAmount: '2',
-          newAmount: '0',
-          inAmount: '0',
-          outAmount: '0',
-          oneLevelAmount: '0',
-          seriousAmount: '0',
+          deptName: '神经外科',
+          outHospitalAmount: '0',
+          liveOver30Amount: '0',
+          liveOver60Amount: '0',
+          notArchivedAmount: '0',
+          ArchivedAmount: '0',
+          deathAmount: '0',
           surgeryAmount: '0',
           qcAmount: '0',
           defectTatal: '0',
@@ -108,6 +136,20 @@ export default {
   methods: {
     handleCurrentChange () {
       this.$router.push('/qualityControl/deptQcInfo')
+    },
+    tableRowClassName ({ row, rowIndex }) {
+      let isRed =
+        row.notArchivedAmount > 0 ||
+        row.archivedAmount > 0 ||
+        row.deathAmount > 0 ||
+        row.surgeryAmount > 0 ||
+        row.handUnfinish > 0 ||
+        row.timeUnfinish > 0 ||
+        row.contentUnfinish > 0
+      if (isRed) {
+        return 'warningRow'
+      }
+      return ''
     }
   },
   created () {}
@@ -159,6 +201,10 @@ export default {
     border-top: none
     .table
       border-top: 3px solid $color-border-blue
+    >>>.warningRow
+      background: $color-warning-red
+    .noticeNo
+      color: $color-notice-red
     >>>.el-table__row
       cursor: pointer
     .footer
