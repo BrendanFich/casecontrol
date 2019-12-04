@@ -20,6 +20,10 @@
           <el-radio-group v-model="form.condition">
             <el-radio label="危重"></el-radio>
             <el-radio label="一般"></el-radio>
+          </el-radio-group>
+        </el-form-item>
+        <el-form-item label="住院时长">
+          <el-radio-group v-model="form.condition">
             <el-radio label="新收"></el-radio>
             <el-radio>住院超出 <el-input style="width: 50px"></el-input> 天数
             </el-radio>
@@ -147,6 +151,8 @@ export default {
     @include box-shadow
     >>>.el-input__inner
       height: 30px
+    >>>.el-form-item__label
+      color: $color-word-blue
     .el-form-item
       margin-bottom: 10px
       margin-top: 10px
@@ -156,7 +162,6 @@ export default {
     .searchBtn
       margin-left: 50px
     .clearBtn
-      border-color: $color-primary
       color: $color-primary
     .searchBtn,.clearBtn
       margin-top: 20px
