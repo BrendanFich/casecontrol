@@ -263,6 +263,7 @@ export default {
     align-items: center
     padding-left: 20px
   .panel
+    position: relative
     float: left
     width: 100%
     height: 540px
@@ -312,7 +313,6 @@ export default {
         margin-left: 30px
         color: $color-word-blue
     .footer
-      width: 100%
       margin-left: 50px
       margin-bottom: 20px
       position: absolute
