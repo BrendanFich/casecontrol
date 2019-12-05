@@ -15,7 +15,7 @@
           :router="true"
         >
           <el-submenu index="1">
-            <template slot="title" class="ss">
+            <template slot="title">
               <i class="el-icon-s-order"></i>
               <span>质控</span>
             </template>
