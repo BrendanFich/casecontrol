@@ -40,7 +40,7 @@
     </div>
     <div class="main">
       <div class="operatings">
-        <el-button type="primary" class="btn">缺陷登记</el-button>
+        <el-button type="primary" class="btn" @click="dialogVisible = true">缺陷登记</el-button>
         <el-button type="primary" class="btn">查看缺陷</el-button>
         <el-button type="primary" class="btn" @click="isScore = !isScore">评分</el-button>
         <el-button type="primary" class="btn">发送质控问题</el-button>
@@ -100,6 +100,24 @@
       </div>
       <router-view></router-view>
     </div>
+    <el-dialog
+      title="质控缺陷问题登记（双击右边列表登记备注）"
+      :modal="false"
+      :lock-scroll="false"
+      :visible.sync="dialogVisible"
+      width="30%"
+      :before-close="handleClose">
+      <div class="left">
+        left
+      </div>
+      <div class="right">
+        right
+      </div>
+      <span slot="footer" class="dialog-footer">
+        <el-button @click="dialogVisible = false">取 消</el-button>
+        <el-button type="primary" @click="dialogVisible = false">确 定</el-button>
+      </span>
+    </el-dialog>
   </div>
 </template>
 
@@ -108,6 +126,7 @@ export default {
   components: {},
   data () {
     return {
+      dialogVisible: false
     }
   },
   computed: {},
