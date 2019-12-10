@@ -8,6 +8,7 @@
       <div class="name">Admin</div>
       <div class="nav">
         <el-menu
+          :default-active="path"
           :unique-opened="true"
           background-color="transparent"
           text-color="#fff"
@@ -70,7 +71,21 @@
 export default {
   name: 'Home',
   data () {
-    return {}
+    return {
+    }
+  },
+  computed: {
+    path () {
+      if (this.$route.path.indexOf('deptQcInfo/sec') !== -1) {
+        return '/qualityControl/sectionQcInfoSum1'
+      } else if (this.$route.path.indexOf('deptQcInfo/end') !== -1) {
+        return '/qualityControl/endQcInfoSum1'
+      } else if (this.$route.path.indexOf('spotCheck') !== -1) {
+        return '/qualityControl/caseHistoryReview'
+      } else {
+        return this.$route.path
+      }
+    }
   },
   methods: {
   }

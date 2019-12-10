@@ -133,7 +133,7 @@ export default {
   watch: {},
   methods: {
     handleCurrentChange () {
-      this.$router.push('/qualityControl/deptQcInfo')
+      this.$router.push('/qualityControl/deptQcInfo/sec')
     },
     tableRowClassName ({ row, rowIndex }) {
       let isRed =

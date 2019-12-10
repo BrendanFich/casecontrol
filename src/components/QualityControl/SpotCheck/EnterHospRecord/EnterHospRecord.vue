@@ -69,42 +69,65 @@
         <el-button class="btn">缺陷</el-button>
         <el-button class="btn">关闭</el-button>
       </div>
-      <div class="title">南海区xxx医院</div>
-      <div class="title">入院记录</div>
-      <div class="info">
-        <span>姓名：王敏婷</span>
-        <span>性别：女</span>
-        <span>年龄：28岁</span>
-        <span>科室：呼吸内科</span>
-        <span>床号：003</span>
-        <span>住院号：0545548</span>
+      <div class="recordContent">
+        <div class="title">南海区xxx医院</div>
+        <div class="title">入院记录</div>
+        <div class="info">
+          <span>姓名：王敏婷</span>
+          <span>性别：女</span>
+          <span>年龄：28岁</span>
+          <span>科室：呼吸内科</span>
+          <span>床号：003</span>
+          <span>住院号：0545548</span>
+        </div>
+        <div class="content">
+          <span>姓名：王敏婷</span>
+          <span>出生地：海南</span>
+          <span>性别：女</span>
+          <span>常住地址：海南</span>
+          <span>年龄：28岁</span>
+          <span>病史陈述者：--</span>
+          <span>姓名：王敏婷</span>
+          <span>出生地：海南</span>
+          <span>性别：女</span>
+          <span>常住地址：海南</span>
+          <span>年龄：28岁</span>
+          <span>病史陈述者：--</span>
+          <span>姓名：王敏婷</span>
+          <span>出生地：海南</span>
+          <span>性别：女</span>
+          <span>常住地址：海南</span>
+          <span>年龄：28岁</span>
+          <span>病史陈述者：--</span>
+          <span>姓名：王敏婷</span>
+          <span>出生地：海南</span>
+          <span>性别：女</span>
+          <span>常住地址：海南</span>
+          <span>年龄：28岁</span>
+          <span>病史陈述者：--</span>
+          <span>姓名：王敏婷</span>
+          <span>出生地：海南</span>
+          <span>性别：女</span>
+          <span>常住地址：海南</span>
+          <span>年龄：28岁</span>
+          <span>病史陈述者：--</span>
+        </div>
       </div>
-      <div class="content">
-        <span>姓名：王敏婷</span>
-        <span>出生地：海南</span>
-        <span>性别：女</span>
-        <span>常住地址：海南</span>
-        <span>年龄：28岁</span>
-        <span>病史陈述者：--</span>
       </div>
-    </div>
-    <div class="score" v-if="tabName === '病历评分'">
+
+    <div class="score panel" v-if="tabName === '病历评分'">
       <div class="operatingBtns">
         <label style="margin-right:10px">评分日期</label>
         <el-date-picker
+          v-model="dateRange"
           size="small"
-          style="width:148px"
-          v-model="beginDate"
-          type="date"
-          placeholder="选择开始日期">
-        </el-date-picker>
-         -
-        <el-date-picker
-          size="small"
-          style="width:148px"
-          v-model="endDate"
-          type="date"
-          placeholder="选择结束日期">
+          style="width:270px"
+          type="daterange"
+          unlink-panels
+          range-separator="至"
+          start-placeholder="开始日期"
+          end-placeholder="结束日期"
+          :picker-options="pickerOptions">
         </el-date-picker>
         <el-button class="btn" style="margin-left:20px">新增评分</el-button>
         <el-button class="btn">修改评分</el-button>
@@ -150,8 +173,7 @@ export default {
   components: {},
   data () {
     return {
-      beginDate: '',
-      endDate: '',
+      dateRange: [],
       tabName: '入院记录',
       sumScore: '100',
       isNeedChange: false,
@@ -212,7 +234,34 @@ export default {
           tabName: '入院记录',
           number: 20
         }
-      ]
+      ],
+      pickerOptions: {
+        shortcuts: [{
+          text: '最近一周',
+          onClick (picker) {
+            const end = new Date()
+            const start = new Date()
+            start.setTime(start.getTime() - 3600 * 1000 * 24 * 7)
+            picker.$emit('pick', [start, end])
+          }
+        }, {
+          text: '最近一个月',
+          onClick (picker) {
+            const end = new Date()
+            const start = new Date()
+            start.setTime(start.getTime() - 3600 * 1000 * 24 * 30)
+            picker.$emit('pick', [start, end])
+          }
+        }, {
+          text: '最近三个月',
+          onClick (picker) {
+            const end = new Date()
+            const start = new Date()
+            start.setTime(start.getTime() - 3600 * 1000 * 24 * 90)
+            picker.$emit('pick', [start, end])
+          }
+        }]
+      }
     }
   },
   computed: {},
@@ -251,17 +300,7 @@ export default {
       .active
         background: $color-border-blue
         color: $color-white
-  .operatingBtns
-    float: left
-    clear: both
-    width: calc(100% - 20px)
-    height: 56px
-    background: $color-bg-label
-    border: 1px solid $color-border-grey
-    border-top: 3px solid $color-border-blue
-    display: flex
-    align-items: center
-    padding-left: 20px
+
   .panel
     position: relative
     float: left
@@ -269,29 +308,43 @@ export default {
     height: 540px
     @include box-shadow
     border-top: none
-    .title
-      text-align: center
-      @include font(25px, 800, $color-word-black)
-      &:first-child
-        margin-top: 47px
-    .info
-      margin-top: 20px
-      padding: 10px 40px
-      border-bottom: 1px solid $color-border-grey
+    .operatingBtns
+      float: left
+      width: calc(100% - 20px)
+      height: 56px
+      background: $color-bg-label
+      border: 1px solid $color-border-grey
+      border-top: 3px solid $color-border-blue
       display: flex
-      justify-content: space-between
-    .content
-      margin: 0 auto
-      margin-top: 20px
-      width: 500px
-      display: flex
-      flex-wrap: wrap
-      justify-content: between
-      span
-        display: block
-        width: 250px
-        height: 50px
-        line-height: 50px
+      align-items: center
+      padding-left: 20px
+    .recordContent
+      float: left
+      width: 100%
+      height: 484px
+      overflow-y: auto
+      .title
+        text-align: center
+        @include font(25px, 800, $color-word-black)
+        &:first-child
+      .info
+        margin-top: 20px
+        padding: 10px 40px
+        border-bottom: 1px solid $color-border-grey
+        display: flex
+        justify-content: space-between
+      .content
+        margin: 0 auto
+        margin-top: 20px
+        width: 500px
+        display: flex
+        flex-wrap: wrap
+        justify-content: between
+        span
+          display: block
+          width: 250px
+          height: 50px
+          line-height: 50px
   .table
     @include box-shadow
   .result

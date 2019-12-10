@@ -2,7 +2,6 @@ import Vue from 'vue'
 import Router from 'vue-router'
 import Login from '@/components/Login/Login'
 import Home from '@/components/Home/Home'
-import Text from '@/components/Text/Text'
 
 // 首页
 import QueryByDoc from '@/components/QualityControlInfo/QueryByDoc/QueryByDoc'
@@ -54,11 +53,6 @@ export default new Router({
       name: 'Login',
       path: '/login',
       component: Login
-    },
-    {
-      name: 'Text',
-      path: '/text',
-      component: Text
     },
     {
       name: 'Home',
@@ -139,7 +133,7 @@ export default new Router({
         },
         {
           name: 'DeptQcInfo',
-          path: 'deptQcInfo',
+          path: 'deptQcInfo/:type',
           component: DeptQcInfo
         }
       ]

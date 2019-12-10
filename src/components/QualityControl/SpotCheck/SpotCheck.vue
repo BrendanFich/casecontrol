@@ -4,10 +4,15 @@
       <div class="title">
         <div>质控病人</div>
         <el-button type="primary" size="mini" class="refresh" round>
-          <img src="./img/refresh.png" alt=""> 刷新
+          <img src="./img/refresh.png" alt /> 刷新
         </el-button>
       </div>
       <div class="navMenu">
+        <div class="peopleSelect">
+          <span>人数 (1)</span>
+          <i class="el-icon-arrow-down"></i>
+          <i class="el-icon-arrow-up"></i>
+        </div>
         <el-menu
           default-active="/qualityControl/spotCheck/enterHospRecord"
           background-color="transparent"
@@ -15,32 +20,27 @@
         >
           <el-submenu index="1">
             <template slot="title">
-              <span>人数 (1)</span>
+              <img src="./img/femaleAvatar.png" /> 王敏婷(033)
             </template>
-            <el-submenu index="1-1">
-              <template slot="title">
-                <img src="./img/femaleAvatar.png"> 王敏婷(033)
-              </template>
-              <el-menu-item index="">体温单</el-menu-item>
-              <el-menu-item index="">长期医嘱</el-menu-item>
-              <el-menu-item index="">临时医嘱</el-menu-item>
-              <el-menu-item index="/qualityControl/spotCheck/enterHospRecord">入院记录</el-menu-item>
-              <el-menu-item index="">首次病程记录</el-menu-item>
-              <el-menu-item index="">病程记录</el-menu-item>
-              <el-menu-item index="">病程记录(完整浏览)</el-menu-item>
-              <el-menu-item index="">查看检验报告</el-menu-item>
-              <el-menu-item index="">出院记录</el-menu-item>
-              <el-menu-item index="">护士记录</el-menu-item>
-              <el-menu-item index="">病案首页</el-menu-item>
-              <el-menu-item index="">历史病历</el-menu-item>
-            </el-submenu>
+            <el-menu-item index>体温单</el-menu-item>
+            <el-menu-item index>长期医嘱</el-menu-item>
+            <el-menu-item index>临时医嘱</el-menu-item>
+            <el-menu-item index="/qualityControl/spotCheck/enterHospRecord">入院记录</el-menu-item>
+            <el-menu-item index>首次病程记录</el-menu-item>
+            <el-menu-item index>病程记录</el-menu-item>
+            <el-menu-item index>病程记录(完整浏览)</el-menu-item>
+            <el-menu-item index>查看检验报告</el-menu-item>
+            <el-menu-item index>出院记录</el-menu-item>
+            <el-menu-item index>护士记录</el-menu-item>
+            <el-menu-item index>病案首页</el-menu-item>
+            <el-menu-item index>历史病历</el-menu-item>
           </el-submenu>
         </el-menu>
       </div>
     </div>
     <div class="main">
       <div class="operatings">
-        <el-button type="primary" class="btn" @click="dialogVisible = true">缺陷登记</el-button>
+        <el-button type="primary" class="btn" @click="regVisible = true">缺陷登记</el-button>
         <el-button type="primary" class="btn">查看缺陷</el-button>
         <el-button type="primary" class="btn" @click="isScore = !isScore">评分</el-button>
         <el-button type="primary" class="btn">发送质控问题</el-button>
@@ -100,43 +100,26 @@
       </div>
       <router-view></router-view>
     </div>
-    <el-dialog
-      title="质控缺陷问题登记（双击右边列表登记备注）"
-      :modal="false"
-      :lock-scroll="false"
-      :visible.sync="dialogVisible"
-      width="30%"
-      :before-close="handleClose">
-      <div class="left">
-        left
-      </div>
-      <div class="right">
-        right
-      </div>
-      <span slot="footer" class="dialog-footer">
-        <el-button @click="dialogVisible = false">取 消</el-button>
-        <el-button type="primary" @click="dialogVisible = false">确 定</el-button>
-      </span>
-    </el-dialog>
+    <ProblemRegDialog :visible="regVisible" @changeVisible="changeVisible"></ProblemRegDialog>
   </div>
 </template>
 
 <script>
+import ProblemRegDialog from './ProblemRegDialog/ProblemRegDialog'
 export default {
-  components: {},
+  components: { ProblemRegDialog },
   data () {
     return {
-      dialogVisible: false
+      regVisible: false
     }
   },
   computed: {},
   watch: {},
   methods: {
-    handleOpen () {
-
-    },
-    handleClose () {
-
+    handleOpen () {},
+    handleClose () {},
+    changeVisible (value) {
+      this.regVisible = value
     }
   },
   created () {}
@@ -156,7 +139,8 @@ export default {
     height: 100%
     border-right: 1px solid $color-border-grey
     .title
-      padding: 15px 20px
+      padding: 0 20px
+      height: 60px
       display: flex
       justify-content: space-between
       align-items: center
@@ -172,6 +156,22 @@ export default {
           width: 14px
           height: 16px
     .navMenu
+      .peopleSelect
+        padding: 0px 20px
+        height: 60px
+        line-height: 60px
+        display: flex
+        justify-content: space-between
+        align-items: center
+        span
+          flex: 1
+        i
+          display: inline-block
+          width: 20px
+          height: 20px
+          margin-left: 5px
+          @include font(14px, 800, $color-word-blue)
+          cursor: pointer
       .el-menu
         border: none
   .main
