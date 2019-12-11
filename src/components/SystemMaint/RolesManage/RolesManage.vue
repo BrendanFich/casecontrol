@@ -125,12 +125,11 @@ export default {
       .el-button
         width: 43px
       >>>.el-input-group__append
-        background: $color-tag-blue
-        border: 1px solid $color-tag-blue
+        background: $color-primary
+        border: 1px solid $color-primary
         i
           color: $color-white
     .addBtn
-      background: $color-tag-blue
       width: 90px
       height: 35px
   .left
@@ -171,7 +170,6 @@ export default {
       text-align: center
       background: $color-primary
       color: $color-white
-      cursor: pointer
     .table
       border-top: 3px solid $color-border-blue
       .cancel

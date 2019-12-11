@@ -16,7 +16,7 @@
     <div class="panel" v-if="tabName === '查看缺陷登记'">
       <div class="operatingBtns">
         <el-radio-group v-model="checkStatus">
-          <el-radio label="缺陷等级"></el-radio>
+          <el-radio label="缺陷登记"></el-radio>
           <el-radio label="时限监控"></el-radio>
           <el-radio label="内容监控"></el-radio>
         </el-radio-group>
@@ -152,7 +152,7 @@
           <label>等级</label>
           <el-input v-model="level" size="small"></el-input>
         </div>
-        <el-table :data="tableData2" style="width: 100%" class="table">
+        <el-table :data="tableData2" style="width: 100%" class="table" @row-click="regVisible = true">
           <el-table-column prop="typeCode" label="类别码" align="center"></el-table-column>
           <el-table-column prop="typeName" label="类别名" align="center"></el-table-column>
           <el-table-column prop="itemName" label="项目名" align="center" width="300"></el-table-column>
@@ -165,20 +165,23 @@
         </el-table>
       </div>
     </div>
+    <ScoreDialog :visible="regVisible" @changeVisible="changeVisible"></ScoreDialog>
   </div>
 </template>
 
 <script>
+import ScoreDialog from '../ScoreDialog/ScoreDialog'
 export default {
-  components: {},
+  components: { ScoreDialog },
   data () {
     return {
+      regVisible: false,
       dateRange: [],
       tabName: '入院记录',
       sumScore: '100',
       isNeedChange: false,
       level: '甲',
-      checkStatus: '缺陷等级',
+      checkStatus: '缺陷登记',
       checkTable1: [
         {
           qcDate: '2012-11-23 23:35:16',
@@ -268,7 +271,13 @@ export default {
   methods: {
     selectTab (tabName) {
       this.tabName = tabName
+    },
+    changeVisible (value) {
+      this.regVisible = value
     }
+    // handleCurrentChange () {
+    //   this.regVisible = true
+    // }
   },
   created () {}
 }
@@ -348,6 +357,8 @@ export default {
   .table
     @include box-shadow
   .result
+    >>>.el-table__row
+      cursor: pointer
     .resultTop
       margin-top: 20px
       width: 100%

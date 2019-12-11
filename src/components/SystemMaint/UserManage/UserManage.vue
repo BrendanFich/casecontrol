@@ -84,7 +84,6 @@ export default {
     text-align: center
     background: $color-primary
     color: $color-white
-    cursor: pointer
   .main
     width: 100%
     height: 686px

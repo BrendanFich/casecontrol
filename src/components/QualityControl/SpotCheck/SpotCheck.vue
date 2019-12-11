@@ -42,8 +42,6 @@
       <div class="operatings">
         <el-button type="primary" class="btn" @click="regVisible = true">缺陷登记</el-button>
         <el-button type="primary" class="btn">查看缺陷</el-button>
-        <el-button type="primary" class="btn" @click="isScore = !isScore">评分</el-button>
-        <el-button type="primary" class="btn">发送质控问题</el-button>
         <el-button type="primary" class="btn">质量没问题</el-button>
       </div>
       <div class="patientInfo">
@@ -110,7 +108,8 @@ export default {
   components: { ProblemRegDialog },
   data () {
     return {
-      regVisible: false
+      regVisible: false,
+      tagName: ''
     }
   },
   computed: {},
