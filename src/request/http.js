@@ -8,9 +8,9 @@ import router from '../router'
 if (process.env.NODE_ENV === 'development') {
   axios.defaults.baseURL = 'http://192.168.1.129:8091'
 } else if (process.env.NODE_ENV === 'debug') {
-  axios.defaults.baseURL = ''
+  axios.defaults.baseURL = 'http://192.168.1.129:8091'
 } else if (process.env.NODE_ENV === 'production') {
-  axios.defaults.baseURL = ''
+  axios.defaults.baseURL = 'http://192.168.1.129:8091'
 }
 
 // 请求超时时间

@@ -168,4 +168,8 @@ export default {
     overflow-y: auto
     .view
       padding: 30px 70px 0 50px
+  .el-button
+    width: 90px
+    height: 32px
+    padding: 0
 </style>

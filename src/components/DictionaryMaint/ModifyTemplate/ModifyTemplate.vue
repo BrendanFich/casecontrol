@@ -226,4 +226,8 @@ export default {
       margin: 36px 0 29px 26px
     .operatings
       margin-left: 26px
+  .el-button
+    width: 90px
+    height: 32px
+    padding: 0
 </style>

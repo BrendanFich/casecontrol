@@ -183,4 +183,8 @@ export default {
         position: absolute
         bottom: 0
         left: 0
+  .el-button
+    width: 90px
+    height: 32px
+    padding: 0
 </style>

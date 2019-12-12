@@ -77,6 +77,10 @@ export default {
   height: 686px
   .operateBtns
     margin-bottom: 20px
+    .el-button
+      width: 90px
+      height: 32px
+      padding: 0
   .tag
     width: 120px
     height: 36px

@@ -71,4 +71,8 @@ export default {
         margin-left: 10px
       >>>.el-switch
         margin-left: 20px
+      .el-button
+        width: 90px
+        height: 32px
+        padding: 0
 </style>

@@ -199,4 +199,8 @@ export default {
         width: 200px
         .key
           color: $color-word-blue
+  .el-button
+    width: 90px
+    height: 32px
+    padding: 0
 </style>

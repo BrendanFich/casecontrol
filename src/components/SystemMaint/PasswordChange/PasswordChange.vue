@@ -109,4 +109,8 @@ export default {
     @include box-shadow
   .form
     width: 400px
+    .el-button
+      width: 90px
+      height: 32px
+      padding: 0
 </style>

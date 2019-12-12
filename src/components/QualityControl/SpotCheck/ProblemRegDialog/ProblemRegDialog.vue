@@ -161,4 +161,8 @@ export default {
         .btn
           width: 70px
           height: 32px
+  .el-button
+    width: 90px
+    height: 32px
+    padding: 0
 </style>

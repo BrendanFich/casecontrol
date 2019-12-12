@@ -150,4 +150,8 @@ export default {
     .bottom
       width: 100%
       height: 150px
+  .el-button
+    width: 90px
+    height: 32px
+    padding: 0
 </style>

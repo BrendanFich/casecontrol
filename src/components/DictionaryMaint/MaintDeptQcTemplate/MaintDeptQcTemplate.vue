@@ -195,6 +195,10 @@ export default {
     width: 1363px
     .operatings
       margin: 30px
+      .el-button
+        width: 90px
+        height: 32px
+        padding: 0
       .btn
         display: inline-block
     .selectBar

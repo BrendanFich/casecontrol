@@ -147,4 +147,8 @@ export default {
       color: $color-notice-red
     >>>.el-table__row
       cursor: pointer
+  .el-button
+    width: 90px
+    height: 32px
+    padding: 0
 </style>

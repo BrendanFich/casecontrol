@@ -132,6 +132,7 @@ export default {
     .addBtn
       width: 90px
       height: 35px
+      padding: 0
   .left
     float: left
     width: 824px

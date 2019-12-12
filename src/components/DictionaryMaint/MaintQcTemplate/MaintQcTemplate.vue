@@ -138,6 +138,10 @@ export default {
       display: flex
       justify-content: space-between
       align-items: center
+      .el-button
+        width: 90px
+        height: 32px
+        padding: 0
       .totalInfo
         margin-bottom: -30px
         margin-right: 50px
