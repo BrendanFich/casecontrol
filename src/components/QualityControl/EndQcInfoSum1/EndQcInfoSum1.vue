@@ -6,7 +6,7 @@
         <div class="infoText">
           全院 共
           <span style="color: #3399FFFF; font-size: 18px">31</span> 个科室
-          <span style="color: #3399FFFF; font-size: 14px">(双击科室查看详情)</span>
+          <span style="color: #3399FFFF; font-size: 14px">(点击科室查看详情)</span>
         </div>
       </div>
       <div class="topRight">

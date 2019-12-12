@@ -5,12 +5,12 @@
       <div class="rightInfo">
         <div class="title">病历质控系统</div>
         <div class="loginInput">
-          <el-input placeholder="请输入用户名" prefix-icon="el-icon-user-solid" v-model="login.username" size="large" clearable></el-input>
-          <el-input placeholder="请输入密码" prefix-icon="el-icon-lock" v-model="login.password" type="password" size="large" clearable></el-input>
+          <el-input placeholder="请输入用户名" prefix-icon="el-icon-user-solid" v-model="loginInfo.username" size="large" clearable></el-input>
+          <el-input placeholder="请输入密码" prefix-icon="el-icon-lock" v-model="loginInfo.password" type="password" size="large" clearable></el-input>
           <div class="remember">
             <span>记住密码</span> <el-switch v-model="isRemember"></el-switch>
           </div>
-          <el-button round type="primary" size="small" @click="doLogin">登录</el-button>
+          <el-button round type="primary" size="small" @click="_login">登录</el-button>
         </div>
       </div>
     </div>
@@ -18,20 +18,28 @@
 </template>
 
 <script>
+import { post } from '@/request/http'
 export default {
   name: 'Login',
   data () {
     return {
       isRemember: true,
-      login: {
-        username: '',
-        password: ''
+      loginInfo: {
+        username: 'xiaoming',
+        password: '1'
       }
     }
   },
   methods: {
-    doLogin () {
-      this.$router.push({path: '/home'})
+    _login () {
+      post('/login', this.loginInfo).then(res => {
+        console.log(res)
+        if (res.code === 0) {
+          this.$router.push({path: '/home'})
+        } else {
+          this.$message.error(res.msg)
+        }
+      })
     }
   }
 }

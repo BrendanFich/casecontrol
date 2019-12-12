@@ -1,8 +1,8 @@
 <template>
   <div class="qcDetailSearch">
     <div class="operating">
-      <el-button type="primary" size="small" class="btn">导出</el-button>
-      <el-button type="primary" size="small" class="btn">打印</el-button>
+      <el-button type="primary" class="btn">导出</el-button>
+      <el-button type="primary" class="btn">打印</el-button>
     </div>
     <div class="form">
       <el-form ref="form" :model="form" label-width="80px" :inline="true">
@@ -41,12 +41,8 @@
       </el-form>
     </div>
     <div class="main">
-      <div class="tabs">
-        <div class="tab" :class="{active: tabName === item}" @click="selectTab(item)" v-for="(item,index) in tagList" :key="index">
-          <span class="tabName">{{item}}</span>
-        </div>
-      </div>
-      <div class="panel" v-if="tabName === '质控问题明细查询'">
+      <div class="tab">质控问题明细查询</div>
+      <div class="panel">
         <div class="table">
           <el-table :data="tableData" style="width: 100%" height="450">
             <el-table-column prop="qcer" label="质控员" align="center"></el-table-column>
@@ -73,10 +69,6 @@ export default {
   components: {},
   data () {
     return {
-      tabName: '质控问题明细查询',
-      tagList: [
-        '质控问题明细查询'
-      ],
       form: {
         department: '呼吸内科',
         doctor: '',
@@ -147,23 +139,13 @@ export default {
     position: relative
     float: left
     width: 100%
-    .tabs
-      .tab
-        float: left
-        width: 200px
-        height: 36px
-        text-align: center
-        line-height: 36px
-        @include font(14px, 400, $color-word-black)
-        border: 1px solid $color-border-grey
-        border-right: none
-        border-bottom: none
-        cursor: pointer
-        &:last-child
-          border-right: 1px solid $color-border-grey
-      .active
-        background: $color-border-blue
-        color: $color-white
+    .tab
+      width: 200px
+      height: 36px
+      text-align: center
+      line-height: 36px
+      background: $color-border-blue
+      @include font(14px, 400, $color-white)
     .panel
       float: left
       width: 100%

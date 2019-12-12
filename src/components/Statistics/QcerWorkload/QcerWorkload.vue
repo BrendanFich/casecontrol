@@ -1,9 +1,9 @@
 <template>
   <div class="qcerWorkload">
     <div class="operating">
-      <el-button type="primary" size="small" class="btn">导出</el-button>
-      <el-button type="primary" size="small" class="btn">打印</el-button>
-      <el-button type="primary" size="small" class="btn">刷新</el-button>
+      <el-button type="primary" class="btn">导出</el-button>
+      <el-button type="primary" class="btn">打印</el-button>
+      <el-button type="primary" class="btn">刷新</el-button>
     </div>
     <div class="form">
       <el-form ref="form" :model="form" label-width="80px" :inline="true">

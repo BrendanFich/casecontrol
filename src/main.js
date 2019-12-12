@@ -3,11 +3,12 @@
 import Vue from 'vue'
 import App from './App'
 import router from './router'
-import { Dialog, Checkbox, Menu, Submenu, MenuItem, Dropdown, DropdownMenu, DropdownItem, Radio, RadioGroup, RadioButton, Button, Input, Switch, Image, Select, Option, Table, TableColumn, Pagination, Form, FormItem, DatePicker, Collapse, CollapseItem, TabPane, Tabs, Tag, Notification, MessageBox } from 'element-ui'
+import { Message, Transfer, Dialog, Checkbox, Menu, Submenu, MenuItem, Dropdown, DropdownMenu, DropdownItem, Radio, RadioGroup, RadioButton, Button, Input, Switch, Image, Select, Option, Table, TableColumn, Pagination, Form, FormItem, DatePicker, Collapse, CollapseItem, TabPane, Tabs, Tag } from 'element-ui'
 import 'assets/sass/element-variables.scss'
 import 'assets/sass/iconfonts.sass'
-import './directives.js'
 
+Vue.component(Message.name, Message)
+Vue.use(Transfer)
 Vue.use(Button)
 Vue.use(Input)
 Vue.use(Switch)
@@ -39,9 +40,7 @@ Vue.use(Dialog)
 
 Vue.config.productionTip = false
 
-Vue.prototype.$notify = Notification
-Vue.prototype.$alert = MessageBox.alert
-Vue.prototype.$confirm = MessageBox.confirm
+Vue.prototype.$message = Message
 
 /* eslint-disable no-new */
 new Vue({

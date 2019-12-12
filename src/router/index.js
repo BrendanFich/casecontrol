@@ -2,6 +2,7 @@ import Vue from 'vue'
 import Router from 'vue-router'
 import Login from '@/components/Login/Login'
 import Home from '@/components/Home/Home'
+import Test from '@/components/Test/Test'
 
 // 首页
 import QueryByDoc from '@/components/QualityControlInfo/QueryByDoc/QueryByDoc'
@@ -59,6 +60,11 @@ export default new Router({
       path: '/home',
       redirect: '/qualityControlInfo',
       component: Home
+    },
+    {
+      name: 'Test',
+      path: '/test',
+      component: Test
     },
     // 首页按医生查找
     {

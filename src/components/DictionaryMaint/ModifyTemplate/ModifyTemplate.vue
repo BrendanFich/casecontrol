@@ -36,7 +36,7 @@
         条记录
       </div>
       <div class="table">
-        <el-table :data="leftTableData" style="width: 100%" height="488">
+        <el-table :data="leftData" style="width: 100%" height="488" ref="selection" @selection-change="checkAll">
           <el-table-column type="selection" width="55"></el-table-column>
           <el-table-column prop="itemCode" label="项目编码" align="center"></el-table-column>
             <el-table-column prop="itemName" label="项目名称" align="center" width="300"></el-table-column>
@@ -49,8 +49,8 @@
       </div>
     </div>
     <div class="middle">
-      <el-button type="primary" round>添加 <i class="el-icon-d-arrow-right"></i></el-button>
-      <el-button type="primary" round icon="el-icon-d-arrow-left">删除</el-button>
+      <el-button type="primary" round :disabled="nowSelectLeftData.length ? false : true" @click="handelSelect">添加 <i class="el-icon-d-arrow-right"></i></el-button>
+      <el-button type="primary" round :disabled="nowSelectRightData.length ? false : true" @click="handleRemoveSelect" icon="el-icon-d-arrow-left">删除</el-button>
     </div>
     <div class="right">
       <div class="title">
@@ -67,7 +67,7 @@
         条记录
       </div>
       <div class="table">
-        <el-table :data="rightTableData" style="width: 100%" height="567">
+        <el-table :data="rightData" style="width: 100%" height="567" ref="selection" @selection-change="checkRightAll">
           <el-table-column type="selection" width="55"></el-table-column>
           <el-table-column prop="itemCode" label="项目编码" align="center"></el-table-column>
             <el-table-column prop="itemName" label="项目名称" align="center" width="300"></el-table-column>
@@ -92,97 +92,7 @@ export default {
       chineseName: '',
       leftType: '',
       rightType: '',
-      leftTableData: [
-        {
-          itemCode: '100002',
-          itemName: '缺整页病历记录造成病历不完整',
-          score: '1',
-          unit: '/项',
-          level: '-',
-          itemRemark: '-',
-          isDeduction: '是'
-        },
-        {
-          itemCode: '100002',
-          itemName: '缺整页病历记录造成病历不完整',
-          score: '1',
-          unit: '/项',
-          level: '-',
-          itemRemark: '-',
-          isDeduction: '是'
-        },
-        {
-          itemCode: '100002',
-          itemName: '缺整页病历记录造成病历不完整',
-          score: '1',
-          unit: '/项',
-          level: '-',
-          itemRemark: '-',
-          isDeduction: '是'
-        },
-        {
-          itemCode: '100002',
-          itemName: '缺整页病历记录造成病历不完整',
-          score: '1',
-          unit: '/项',
-          level: '-',
-          itemRemark: '-',
-          isDeduction: '是'
-        },
-        {
-          itemCode: '100002',
-          itemName: '缺整页病历记录造成病历不完整',
-          score: '1',
-          unit: '/项',
-          level: '-',
-          itemRemark: '-',
-          isDeduction: '是'
-        },
-        {
-          itemCode: '100002',
-          itemName: '缺整页病历记录造成病历不完整',
-          score: '1',
-          unit: '/项',
-          level: '-',
-          itemRemark: '-',
-          isDeduction: '是'
-        },
-        {
-          itemCode: '100002',
-          itemName: '缺整页病历记录造成病历不完整',
-          score: '1',
-          unit: '/项',
-          level: '-',
-          itemRemark: '-',
-          isDeduction: '是'
-        },
-        {
-          itemCode: '100002',
-          itemName: '缺整页病历记录造成病历不完整',
-          score: '1',
-          unit: '/项',
-          level: '-',
-          itemRemark: '-',
-          isDeduction: '是'
-        },
-        {
-          itemCode: '100002',
-          itemName: '缺整页病历记录造成病历不完整',
-          score: '1',
-          unit: '/项',
-          level: '-',
-          itemRemark: '-',
-          isDeduction: '是'
-        },
-        {
-          itemCode: '100002',
-          itemName: '缺整页病历记录造成病历不完整',
-          score: '1',
-          unit: '/项',
-          level: '-',
-          itemRemark: '-',
-          isDeduction: '是'
-        },
+      leftData: [
         {
           itemCode: '100002',
           itemName: '缺整页病历记录造成病历不完整',
@@ -202,121 +112,46 @@ export default {
           isDeduction: '是'
         }
       ],
-      rightTableData: [
-        {
-          itemCode: '100001',
-          itemName: '缺整页病历记录造成病历不完整',
-          score: '1',
-          unit: '/项',
-          level: '-',
-          itemRemark: '-',
-          isDeduction: '是'
-        },
-        {
-          itemCode: '100001',
-          itemName: '缺整页病历记录造成病历不完整',
-          score: '1',
-          unit: '/项',
-          level: '-',
-          itemRemark: '-',
-          isDeduction: '是'
-        },
-        {
-          itemCode: '100001',
-          itemName: '缺整页病历记录造成病历不完整',
-          score: '1',
-          unit: '/项',
-          level: '-',
-          itemRemark: '-',
-          isDeduction: '是'
-        },
-        {
-          itemCode: '100001',
-          itemName: '缺整页病历记录造成病历不完整',
-          score: '1',
-          unit: '/项',
-          level: '-',
-          itemRemark: '-',
-          isDeduction: '是'
-        },
-        {
-          itemCode: '100001',
-          itemName: '缺整页病历记录造成病历不完整',
-          score: '1',
-          unit: '/项',
-          level: '-',
-          itemRemark: '-',
-          isDeduction: '是'
-        },
-        {
-          itemCode: '100001',
-          itemName: '缺整页病历记录造成病历不完整',
-          score: '1',
-          unit: '/项',
-          level: '-',
-          itemRemark: '-',
-          isDeduction: '是'
-        },
-        {
-          itemCode: '100001',
-          itemName: '缺整页病历记录造成病历不完整',
-          score: '1',
-          unit: '/项',
-          level: '-',
-          itemRemark: '-',
-          isDeduction: '是'
-        },
-        {
-          itemCode: '100001',
-          itemName: '缺整页病历记录造成病历不完整',
-          score: '1',
-          unit: '/项',
-          level: '-',
-          itemRemark: '-',
-          isDeduction: '是'
-        },
-        {
-          itemCode: '100001',
-          itemName: '缺整页病历记录造成病历不完整',
-          score: '1',
-          unit: '/项',
-          level: '-',
-          itemRemark: '-',
-          isDeduction: '是'
-        },
-        {
-          itemCode: '100001',
-          itemName: '缺整页病历记录造成病历不完整',
-          score: '1',
-          unit: '/项',
-          level: '-',
-          itemRemark: '-',
-          isDeduction: '是'
-        },
-        {
-          itemCode: '100001',
-          itemName: '缺整页病历记录造成病历不完整',
-          score: '1',
-          unit: '/项',
-          level: '-',
-          itemRemark: '-',
-          isDeduction: '是'
-        },
-        {
-          itemCode: '100001',
-          itemName: '缺整页病历记录造成病历不完整',
-          score: '1',
-          unit: '/项',
-          level: '-',
-          itemRemark: '-',
-          isDeduction: '是'
-        }
-      ]
+      rightData: [],
+      nowSelectLeftData: [],
+      nowSelectRightData: []
     }
   },
   computed: {},
   watch: {},
   methods: {
+    checkAll (val) {
+      this.nowSelectLeftData = val
+    },
+    checkRightAll (val) {
+      this.nowSelectRightData = val
+    },
+    handelSelect () {
+      this.rightData = this.handleConcatArr(this.rightData, this.nowSelectLeftData)
+      this.handleRemoveTabList(this.nowSelectLeftData, this.leftData)
+      this.nowSelectLeftData = []
+    },
+    handleRemoveSelect () {
+      this.leftData = this.handleConcatArr(this.leftData, this.nowSelectRightData)
+      this.handleRemoveTabList(this.nowSelectRightData, this.rightData)
+      this.nowSelectRightData = []
+    },
+    handleConcatArr (rightData, nowSelectLeftData) {
+      let arr = []
+      arr = arr.concat(rightData, nowSelectLeftData)
+      return arr
+    },
+    handleRemoveTabList (isNeedArr, originalArr) {
+      if (isNeedArr.length && originalArr.length) {
+        for (let i = 0; i < isNeedArr.length; i++) {
+          for (let k = 0; k < originalArr.length; k++) {
+            if (isNeedArr[i]['name'] === originalArr[k]['name']) {
+              originalArr.splice(k, 1)
+            }
+          }
+        }
+      }
+    }
   },
   created () {}
 }

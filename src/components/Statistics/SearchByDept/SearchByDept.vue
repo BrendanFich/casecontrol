@@ -1,8 +1,8 @@
 <template>
   <div class="searchByDept">
     <div class="operating">
-      <el-button type="primary" size="small" class="btn">导出</el-button>
-      <el-button type="primary" size="small" class="btn">刷新</el-button>
+      <el-button type="primary" class="btn">导出</el-button>
+      <el-button type="primary" class="btn">刷新</el-button>
     </div>
     <div class="form">
       <el-form ref="form" :model="form" label-width="80px" :inline="true">
@@ -39,12 +39,8 @@
       </el-form>
     </div>
     <div class="main">
-      <div class="tabs">
-        <div class="tab" :class="{active: tabName === item}" @click="selectTab(item)" v-for="(item,index) in tagList" :key="index">
-          <span class="tabName">{{item}}</span>
-        </div>
-      </div>
-      <div class="panel" v-if="tabName === '全院缺陷明细统计(按科室)'">
+      <div class="tab">全院缺陷明细统计(按科室)</div>
+      <div class="panel">
         <div class="table">
           <el-table :data="tableData" style="width: 100%" height="450">
             <el-table-column prop="deptCode" label="科室代码" align="center" width="300"></el-table-column>
@@ -66,10 +62,6 @@ export default {
   components: {},
   data () {
     return {
-      tabName: '全院缺陷明细统计(按科室)',
-      tagList: [
-        '全院缺陷明细统计(按科室)'
-      ],
       form: {
         department: '呼吸内科',
         doctor: '',
@@ -92,9 +84,6 @@ export default {
   methods: {
     onSubmit () {
       console.log('submit!')
-    },
-    selectTab (tabName) {
-      this.tabName = tabName
     }
   },
   created () {}
@@ -134,25 +123,14 @@ export default {
     position: relative
     float: left
     width: 100%
-    .tabs
-      .tab
-        float: left
-        width: 200px
-        height: 36px
-        text-align: center
-        line-height: 36px
-        @include font(14px, 400, $color-word-black)
-        border: 1px solid $color-border-grey
-        border-right: none
-        border-bottom: none
-        cursor: pointer
-        &:last-child
-          border-right: 1px solid $color-border-grey
-      .active
-        background: $color-border-blue
-        color: $color-white
+    .tab
+      width: 200px
+      height: 36px
+      text-align: center
+      line-height: 36px
+      background: $color-border-blue
+      @include font(14px, 400, $color-white)
     .panel
-      float: left
       width: 100%
       @include box-shadow
       border-top: none
