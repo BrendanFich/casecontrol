@@ -9,9 +9,9 @@
       </div>
       <div class="navMenu">
         <div class="peopleSelect">
-          <span>人数 (1)</span>
-          <i class="el-icon-arrow-down"></i>
-          <i class="el-icon-arrow-up"></i>
+          <span>人数 ({{$store.state.secSelected.length}})</span>
+          <i class="el-icon-arrow-down" @click="nextPatient"></i>
+          <i class="el-icon-arrow-up" @click="beforePatient"></i>
         </div>
         <el-menu
           default-active="/qualityControl/spotCheck/enterHospRecord"
@@ -110,6 +110,7 @@ export default {
     return {
       regVisible: false,
       tagName: ''
+      // selectedItem: this.$store.state.selectedData['0']
     }
   },
   computed: {},
@@ -119,6 +120,12 @@ export default {
     handleClose () {},
     changeVisible (value) {
       this.regVisible = value
+    },
+    nextPatient () {
+      console.log(1)
+    },
+    beforePatient () {
+      console.log(2)
     }
   },
   created () {}

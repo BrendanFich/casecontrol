@@ -6,6 +6,7 @@ import router from './router'
 import { Message, Transfer, Dialog, Checkbox, Menu, Submenu, MenuItem, Dropdown, DropdownMenu, DropdownItem, Radio, RadioGroup, RadioButton, Button, Input, Switch, Image, Select, Option, Table, TableColumn, Pagination, Form, FormItem, DatePicker, Collapse, CollapseItem, TabPane, Tabs, Tag } from 'element-ui'
 import 'assets/sass/element-variables.scss'
 import 'assets/sass/iconfonts.sass'
+import store from './vuex/store'
 
 Vue.component(Message.name, Message)
 Vue.use(Transfer)
@@ -46,6 +47,7 @@ Vue.prototype.$message = Message
 new Vue({
   el: '#app',
   router,
+  store,
   components: { App },
   template: '<App/>'
 })

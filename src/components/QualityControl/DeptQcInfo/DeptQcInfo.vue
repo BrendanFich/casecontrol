@@ -58,7 +58,7 @@
     </div>
     <div class="tag">环节质控信息汇总</div>
     <div class="main">
-      <el-table :data="tableData" style="width: 100%" class="table">
+      <el-table :data="tableData" style="width: 100%" class="table" @selection-change="select">
         <el-table-column type="selection" width="50"> </el-table-column>
         <el-table-column prop="qualityControl" label="质控" align="center" width="50"></el-table-column>
         <el-table-column prop="bedNo" label="床号" align="center"></el-table-column>
@@ -104,10 +104,30 @@ export default {
         {
           qualityControl: '',
           bedNo: '002',
-          name: '周志文',
+          name: '王敏婷',
           inHospitalNo: '054595',
           sex: '女',
           age: '24',
+          enterTime: '2018-8-2 15:00:47',
+          docName: '周庭辉',
+          inHospitalDays: '113',
+          newReceive: '否',
+          condition: '',
+          firstDiagnosis: '上呼吸道感染',
+          isSurgery: '否',
+          isChanggeDept: '否',
+          qcTime: '2',
+          unfinishedAmount: '0',
+          handleUnfinishedAmount: '0',
+          timeUnfinishedAmount: '1'
+        },
+        {
+          qualityControl: '',
+          bedNo: '031',
+          name: '李浩宇',
+          inHospitalNo: '054595',
+          sex: '男',
+          age: '28',
           enterTime: '2018-8-2 15:00:47',
           docName: '周庭辉',
           inHospitalDays: '113',
@@ -127,14 +147,24 @@ export default {
   computed: {},
   watch: {},
   methods: {
+    select (selectedData) {
+      console.log(selectedData)
+      this.$store.commit('changeSecSelected', selectedData)
+    },
     onSubmit () {
       console.log('submit!')
     },
     spotCheck () {
-      this.$router.push('/qualityControl/spotCheck/enterHospRecord')
+      if (this.$store.state.secSelected.length !== 0) {
+        this.$router.push('/qualityControl/spotCheck/enterHospRecord')
+      } else {
+        this.$message.error('请先勾选病人')
+      }
     }
   },
-  created () {}
+  created () {
+    this.$store.commit('changeSecSelected', [])
+  }
 }
 </script>
 
