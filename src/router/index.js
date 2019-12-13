@@ -16,7 +16,6 @@ import SectionQcInfoSum1 from '@/components/QualityControl/SectionQcInfoSum1/Sec
 import EndQcInfoSum1 from '@/components/QualityControl/EndQcInfoSum1/EndQcInfoSum1'
 import DeptQcInfo from '@/components/QualityControl/DeptQcInfo/DeptQcInfo'
 import CaseHistoryReview from '@/components/QualityControl/CaseHistoryReview/CaseHistoryReview'
-import EnterHospRecord from '@/components/QualityControl/SpotCheck/EnterHospRecord/EnterHospRecord'
 import SpotCheck from '@/components/QualityControl/SpotCheck/SpotCheck'
 
 // 统计
@@ -122,15 +121,7 @@ export default new Router({
         {
           name: 'SpotCheck',
           path: 'spotCheck',
-          component: SpotCheck,
-          redirect: '/qualityControl/spotCheck/enterHospRecord',
-          children: [
-            {
-              name: 'EnterHospRecord',
-              path: 'enterHospRecord',
-              component: EnterHospRecord
-            }
-          ]
+          component: SpotCheck
         },
         {
           name: 'CaseHistoryReview',

@@ -105,7 +105,7 @@ export default {
           qualityControl: '',
           bedNo: '002',
           name: '王敏婷',
-          inHospitalNo: '054595',
+          inHospitalNo: '323113',
           sex: '女',
           age: '24',
           enterTime: '2018-8-2 15:00:47',
@@ -125,7 +125,7 @@ export default {
           qualityControl: '',
           bedNo: '031',
           name: '李浩宇',
-          inHospitalNo: '054595',
+          inHospitalNo: '323112',
           sex: '男',
           age: '28',
           enterTime: '2018-8-2 15:00:47',
@@ -156,7 +156,7 @@ export default {
     },
     spotCheck () {
       if (this.$store.state.secSelected.length !== 0) {
-        this.$router.push('/qualityControl/spotCheck/enterHospRecord')
+        this.$router.push('/qualityControl/spotCheck')
       } else {
         this.$message.error('请先勾选病人')
       }

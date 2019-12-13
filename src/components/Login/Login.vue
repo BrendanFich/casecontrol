@@ -35,7 +35,13 @@ export default {
       post('/login', this.loginInfo).then(res => {
         console.log(res)
         if (res.code === 0) {
-          this.$router.push({path: '/home'})
+          localStorage.setItem('blzkToken', res.data.token)
+          console.log(this.$route)
+          if (this.$route.query.redirect) {
+            this.$router.push(this.$route.query.redirect)
+          } else {
+            this.$router.push({path: '/home'})
+          }
         } else {
           this.$message.error(res.msg)
         }

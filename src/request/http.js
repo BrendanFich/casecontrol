@@ -39,6 +39,12 @@ axios.interceptors.request.use(
 axios.interceptors.response.use(
   response => {
     if (response.status === 200) {
+      if (response.data.code === 401) {
+        router.replace({
+          path: '/login',
+          query: { redirect: router.currentRoute.fullPath }
+        })
+      }
       return Promise.resolve(response)
     } else {
       return Promise.reject(response)
