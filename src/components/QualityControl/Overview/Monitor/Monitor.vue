@@ -85,17 +85,17 @@ export default {
       tabsList: [
         {
           tabName: '缺陷登记',
-          path: '/qualityControlInfo/monitor/defectRegister',
+          path: '/qualityControl/overview/monitor/defectRegister',
           number: 20
         },
         {
           tabName: '时限监控',
-          path: '/qualityControlInfo/monitor/timeLimitMonitor',
+          path: '/qualityControl/overview/monitor/timeLimitMonitor',
           number: 20
         },
         {
           tabName: '内容监控',
-          path: '/qualityControlInfo/monitor/contentMonitor',
+          path: '/qualityControl/overview/monitor/contentMonitor',
           number: 1
         }
       ]

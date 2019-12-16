@@ -3,13 +3,7 @@ import Router from 'vue-router'
 import Login from '@/components/Login/Login'
 import Home from '@/components/Home/Home'
 import Test from '@/components/Test/Test'
-
-// 首页
-import QueryByDoc from '@/components/QualityControlInfo/QueryByDoc/QueryByDoc'
-import Monitor from '@/components/QualityControlInfo/Monitor/Monitor'
-import ContentMonitor from '@/components/QualityControlInfo/Monitor/ContentMonitor/ContentMonitor'
-import TimeLimitMonitor from '@/components/QualityControlInfo/Monitor/TimeLimitMonitor/TimeLimitMonitor'
-import DefectRegister from '@/components/QualityControlInfo/Monitor/DefectRegister/DefectRegister'
+import ComponentContent from '@/base/ComponentContent/ComponentContent'
 
 // 质控
 import SectionQcInfoSum1 from '@/components/QualityControl/SectionQcInfoSum1/SectionQcInfoSum1'
@@ -17,6 +11,11 @@ import EndQcInfoSum1 from '@/components/QualityControl/EndQcInfoSum1/EndQcInfoSu
 import DeptQcInfo from '@/components/QualityControl/DeptQcInfo/DeptQcInfo'
 import CaseHistoryReview from '@/components/QualityControl/CaseHistoryReview/CaseHistoryReview'
 import SpotCheck from '@/components/QualityControl/SpotCheck/SpotCheck'
+import QueryByDoc from '@/components/QualityControl/Overview/queryByDoc/queryByDoc'
+import Monitor from '@/components/QualityControl/Overview/Monitor/Monitor'
+import ContentMonitor from '@/components/QualityControl/Overview/Monitor/ContentMonitor/ContentMonitor'
+import TimeLimitMonitor from '@/components/QualityControl/Overview/Monitor/TimeLimitMonitor/TimeLimitMonitor'
+import DefectRegister from '@/components/QualityControl/Overview/Monitor/DefectRegister/DefectRegister'
 
 // 统计
 import SectionQcInfoSum2 from '@/components/Statistics/SectionQcInfoSum2/SectionQcInfoSum2'
@@ -57,7 +56,7 @@ export default new Router({
     {
       name: 'Home',
       path: '/home',
-      redirect: '/qualityControlInfo',
+      redirect: '/qualityControl',
       component: Home
     },
     {
@@ -65,48 +64,12 @@ export default new Router({
       path: '/test',
       component: Test
     },
-    // 首页按医生查找
-    {
-      name: 'QualityControlInfo',
-      path: '/qualityControlInfo',
-      component: Home,
-      redirect: '/qualityControlInfo/queryByDoc',
-      children: [
-        {
-          name: 'QueryByDoc',
-          path: 'queryByDoc',
-          component: QueryByDoc
-        },
-        {
-          name: 'Monitor',
-          path: 'monitor',
-          component: Monitor,
-          children: [
-            {
-              name: 'TimeLimitMonitor',
-              path: 'timeLimitMonitor',
-              component: TimeLimitMonitor
-            },
-            {
-              name: 'ContentMonitor',
-              path: 'contentMonitor',
-              component: ContentMonitor
-            },
-            {
-              name: 'DefectRegister',
-              path: 'defectRegister',
-              component: DefectRegister
-            }
-          ]
-        }
-      ]
-    },
-    // 质检
+    // 质控-总览
     {
       name: 'QualityControl',
       path: '/qualityControl',
       component: Home,
-      redirect: '/qualityControl/sectionQcInfoSum1',
+      redirect: '/qualityControl/overview',
       children: [
         {
           name: 'SectionQcInfoSum1',
@@ -132,6 +95,41 @@ export default new Router({
           name: 'DeptQcInfo',
           path: 'deptQcInfo/:type',
           component: DeptQcInfo
+        },
+        {
+          name: 'Overview',
+          path: 'overview',
+          redirect: '/qualityControl/overview/queryByDoc',
+          component: ComponentContent,
+          children: [
+            {
+              name: 'QueryByDoc',
+              path: 'queryByDoc',
+              component: QueryByDoc
+            },
+            {
+              name: 'Monitor',
+              path: 'monitor',
+              component: Monitor,
+              children: [
+                {
+                  name: 'TimeLimitMonitor',
+                  path: 'timeLimitMonitor',
+                  component: TimeLimitMonitor
+                },
+                {
+                  name: 'ContentMonitor',
+                  path: 'contentMonitor',
+                  component: ContentMonitor
+                },
+                {
+                  name: 'DefectRegister',
+                  path: 'defectRegister',
+                  component: DefectRegister
+                }
+              ]
+            }
+          ]
         }
       ]
     },

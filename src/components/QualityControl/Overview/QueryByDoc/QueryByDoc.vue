@@ -112,7 +112,7 @@ export default {
   watch: {},
   methods: {
     handleCurrentChange () {
-      this.$router.push('/qualityControlInfo/monitor/timeLimitMonitor')
+      this.$router.push('/qualityControl/overview/monitor/timeLimitMonitor')
     }
   },
   created () {}

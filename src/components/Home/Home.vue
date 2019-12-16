@@ -20,6 +20,7 @@
               <i class="el-icon-s-order"></i>
               <span>质控</span>
             </template>
+            <el-menu-item index="/qualityControl/overview">总览</el-menu-item>
             <el-menu-item index="/qualityControl/sectionQcInfoSum1">环节质控信息汇总</el-menu-item>
             <el-menu-item index="/qualityControl/endQcInfoSum1">终末质控信息汇总</el-menu-item>
             <el-menu-item index="/qualityControl/caseHistoryReview">病例复查</el-menu-item>
@@ -76,7 +77,9 @@ export default {
   },
   computed: {
     path () {
-      if (this.$route.path.indexOf('deptQcInfo/sec') !== -1) {
+      if (this.$route.path.indexOf('overview') !== -1) {
+        return '/qualityControl/overview'
+      } else if (this.$route.path.indexOf('deptQcInfo/sec') !== -1) {
         return '/qualityControl/sectionQcInfoSum1'
       } else if (this.$route.path.indexOf('deptQcInfo/end') !== -1) {
         return '/qualityControl/endQcInfoSum1'
