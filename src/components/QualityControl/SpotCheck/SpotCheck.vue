@@ -26,7 +26,7 @@
         </el-menu>
       </div>
     </div>
-    <div class="main">
+    <!-- <div class="main">
       <div class="operatings">
         <el-button type="primary" class="btn" @click="regVisible1 = true">缺陷登记</el-button>
         <el-button type="primary" class="btn">查看缺陷</el-button>
@@ -209,7 +209,7 @@
         <ScoreDialog :visible="regVisible2" @changeVisible="changeVisible2"></ScoreDialog>
       </div>
     </div>
-    <ProblemRegDialog :visible="regVisible1" @changeVisible="changeVisible1"></ProblemRegDialog>
+    <ProblemRegDialog :visible="regVisible1" @changeVisible="changeVisible1"></ProblemRegDialog> -->
   </div>
 </template>
 
@@ -222,13 +222,12 @@ export default {
   data () {
     return {
       regVisible1: false,
-      tagName: '',
-      patientList: this.$store.state.secSelected,
-      medicalList: [],
-      patientIndex: 0,
       regVisible2: false,
+      patientList: this.$store.state.secSelected,
+      patientIndex: 0,
+      medicalList: [],
       dateRange: [],
-      // tabName: this.medicalList[0],
+      // tabName: this.menuList[0],
       sumScore: '100',
       isNeedChange: false,
       level: '甲',
@@ -310,7 +309,7 @@ export default {
   },
   computed: {
     tabName () {
-      return this.medicalList[0]
+      return this.menuList[0]
     },
     currentPatient () {
       return this.patientList[this.patientIndex]
@@ -355,11 +354,13 @@ export default {
     turnNext () {
       if (this.patientIndex < this.patientList.length - 1) {
         this.patientIndex += 1
+        this._getMedicalList()
       }
     },
     turnBefore () {
       if (this.patientIndex > 0) {
         this.patientIndex -= 1
+        this._getMedicalList()
       }
     }
   }
