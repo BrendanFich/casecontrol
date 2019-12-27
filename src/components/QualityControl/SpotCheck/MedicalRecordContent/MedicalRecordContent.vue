@@ -35,7 +35,9 @@ export default {
   computed: {},
   methods: {
   },
-  created () {}
+  created () {
+    console.log(this.recordData)
+  }
 }
 </script>
 
